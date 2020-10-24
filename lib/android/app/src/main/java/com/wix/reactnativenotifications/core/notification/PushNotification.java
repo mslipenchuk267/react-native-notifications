@@ -56,12 +56,19 @@ public class PushNotification implements IPushNotification {
         mJsIOHelper = JsIOHelper;
         mNotificationProps = createProps(bundle);
     }
-
+    /* OLD -> Foreground Notifications Not working
     @Override
     public void onReceived() throws InvalidNotificationException {
         if (!mAppLifecycleFacade.isAppVisible()) {
             postNotification(null);
         }
+        notifyReceivedToJS();
+    }
+    */
+    // NEW -> Foreground Notifications Working
+    @Override
+    public void onReceived() throws InvalidNotificationException {
+        postNotification(null);
         notifyReceivedToJS();
     }
 
